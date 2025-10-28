@@ -8,6 +8,7 @@ interface Recipe {
   description: string;
   spiceLevel: "Mild" | "Medium" | "Hot";
   prepTime: string;
+  image: string;
   ingredients: string[];
   instructions: string[];
 }
@@ -19,6 +20,7 @@ const recipes: Recipe[] = [
     description: "Traditional red salsa with tomatoes, cilantro, and lime",
     spiceLevel: "Medium",
     prepTime: "15 mins",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&crop=center",
     ingredients: [
       "4 medium tomatoes",
       "1 onion",
@@ -41,6 +43,7 @@ const recipes: Recipe[] = [
     description: "Tangy green salsa featuring tomatillos and serrano peppers",
     spiceLevel: "Medium",
     prepTime: "20 mins",
+    image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=300&fit=crop&crop=center",
     ingredients: [
       "6 tomatillos",
       "2 serrano peppers",
@@ -63,6 +66,7 @@ const recipes: Recipe[] = [
     description: "Tropical twist with sweet mango and spicy peppers",
     spiceLevel: "Mild",
     prepTime: "10 mins",
+    image: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop&crop=center",
     ingredients: [
       "2 ripe mangoes",
       "1 red bell pepper",
@@ -85,6 +89,7 @@ const recipes: Recipe[] = [
     description: "Hearty, nutritious salsa packed with fresh vegetables",
     spiceLevel: "Mild",
     prepTime: "15 mins",
+    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=400&h=300&fit=crop&crop=center",
     ingredients: [
       "2 cups corn",
       "1 can black beans",
@@ -175,10 +180,12 @@ export default function Home() {
               onClick={() => setSelectedRecipe(recipe)}
               className="text-left group"
             >
-              <div className="relative mb-4 h-48 bg-gray-100 rounded-2xl overflow-hidden flex items-center justify-center">
-                <div className="text-5xl opacity-80 group-hover:scale-110 transition-transform duration-300">
-                  🌶️
-                </div>
+              <div className="relative mb-4 h-48 bg-gray-100 rounded-2xl overflow-hidden">
+                <img
+                  src={recipe.image}
+                  alt={recipe.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <div className="space-y-2">
                 <h3 className="text-xl font-semibold text-gray-900">
@@ -226,8 +233,12 @@ export default function Home() {
               {/* Content */}
               <div className="px-6 py-8 space-y-8">
                 {/* Image */}
-                <div className="h-48 bg-gray-100 rounded-2xl flex items-center justify-center">
-                  <div className="text-6xl">🌶️</div>
+                <div className="h-48 bg-gray-100 rounded-2xl overflow-hidden">
+                  <img
+                    src={selectedRecipe.image}
+                    alt={selectedRecipe.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
                 {/* Description */}
